@@ -30,10 +30,7 @@ while len(guessed) < 50:
         t.setposition(x_cor, y_cor)
         t.write(answer_state)#, font=('Arial', 10, 'bold'))
     elif answer_state == "Quit" or answer_state == "Q":
-        states_to_learn = []
-        for state in states_list:
-            if state not in guessed:
-                states_to_learn.append(state)
+        states_to_learn = [state for state in states_list if state not in guessed]
         new_data = pandas.DataFrame(states_to_learn)
         new_data.to_csv("states_to_learn.csv")
         break   
